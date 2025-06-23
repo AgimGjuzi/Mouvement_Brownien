@@ -1,0 +1,45 @@
+# Units for length, time and mass are micrometers, seconds and
+# milligrams
+
+# Select integrator
+scheme					                       stochastic_adams_bashforth_rollers
+
+# Define implementation to compute the blobs mobility
+mobility_blobs_implementation            numba
+mobility_vector_prod_implementation      numba
+
+
+# Define implementation to compute the blobs-blob force and pass its arguments
+blob_blob_force_implementation	       numba 
+repulsion_strength	   		               0.05
+debye_length	   			                0.03 
+                    
+# Set time step, number of steps and save frequency
+dt		 	   	     	                       0.01
+n_steps					                       100
+n_save  				                       1
+initial_step				                   0
+solver_tolerance			                    1e-3
+
+# Set viscosity, gravity and blob radius
+# In units of micrometers, seconds and milligrams
+eta					                             1e-3
+g					                              0
+blob_radius				                         1
+kT					                             0.0041419464
+
+
+# Set interaction with the wall
+repulsion_strength_wall			          0.02
+debye_length_wall	   		              0.021
+
+# Seed random number generator
+# seed					 1
+
+# Set output name
+output_name				                     run_blobs
+save_clones				                     one_file
+
+
+# Read structures
+structure	../../Structures/blob.vertex sphere_array.clones
